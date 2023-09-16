@@ -1,0 +1,10 @@
+Flask
+gunicorn
+gradio
+diffusers
+transformers
+scipy
+ftfy
+git+https://github.com/rinnakk/japanese-stable-diffusion
+
+

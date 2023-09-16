@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Flask app</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/mainpage.css') }}">
+</head>
+<body onload="typeWriter();init()" >
+
+  <div id="particles-js">
+  </div>
+  <div class="content">
+    <h1>Keywords to image generation </h1>
+
+    <form action="{{ url_for('submit') }}" method="post" id="myform">
+      <div>
+        <label > Diffusion model :</label>
+        <select id="dl_models" name="selected_model" >
+          {% for model_name in model_list %}
+              <option value= {{ model_name }} >{{ model_name }} </option>
+          {% endfor %}
+        </select>
+      </div>
+      <h4>&nbsp;&nbsp;&nbsp;&nbsp;タイトル</h4>
+      <textarea id="prompt_text" name="prompt_text" cols = "10" rows="2">{{input_title}}</textarea>
+      <br>
+      <button id="predictbtn" type="submit" value="生成する" class="submitbtn"  onclick="after_submit()" >生成する</button>
+      {% if imagelist %}
+      {% for filename in imagelist %}
+        <div>
+          <img src="{{ url_for('display_image', filename=filename) }}" alt=”{{filename}}” id=”showSimilarInPopup”>
+        </div>
+      {% endfor %}
+      {% endif %}
+    </form>
+  </div>
+
+
+
+<script>
+var i = 0;
+var title = '{{generated_title}}'
+var txt ='{{generated_text}}';
+var speed = 20;
+let submitbtn = document.querySelector(".submitbtn");
+let result = document.getElementById("result");
+var loading = '{{isLoading}}';
+
+function after_submit(){
+  loading = true
+}
+
+function typeWriter() {
+  document.getElementById("title").innerHTML = title;
+  if (i < txt.length) {
+    document.getElementById("demo").innerHTML += txt.charAt(i);
+    i++;
+    setTimeout(typeWriter, speed);
+  }
+}
+
+
+function init() {
+        submitbtn.classList.add("active");
+        result.innerHTML = " ";
+        submitbtn.addEventListener("click", show_progress_bar)
+      }
+      function show_progress_bar(){
+           var loading_div = document.getElementById("loading")
+           var pred_time ='{{predict_time}}';
+
+           if (loading == true){
+           loading_div.classList.add("show");
+           }
+          else{
+          loading_div.classList.remove("show");
+         
+         }
+         
+  }
+  
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script>
+    particlesJS.load("particles-js", "{{ url_for('static', filename='particles.json') }}",
+    function(){
+    console.log("particles.json has loaded");
+});
+</script>
+
+
+
+</body>
+</html>
+

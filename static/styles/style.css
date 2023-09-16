@@ -1,0 +1,125 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,500,700);
+html {
+  scroll-behavior: smooth;
+}
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 30px;
+  background: #333;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+header {
+  top: 2%;
+  left: 0;
+  width: 100%;
+  position: absolute;
+  z-index: 999;
+}
+
+.submitbtn {
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  background-color: #083240;
+  color: #fff;
+  font-size: 16px;
+  letter-spacing: 00.03em;
+  border-radius: 7px;
+  margin-top: 30px;
+  box-sizing: border-box;
+  box-sizing: 2px 3px 5px rgba(0, 0, 0, 0.4);
+  display: none;
+  transition: 0.5s;
+  margin-bottom: 10px;
+}
+.submitbtn:hover {
+  background-color: #1f1e1c;
+}
+.submitbtn.active {
+  display: block;
+}
+
+.loading {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+.loading.show {
+  display: block;
+  display: flex;
+}
+.ball {
+  width: 12px;
+  height: 12px;
+  border-radius: 11px;
+  margin: 0 10px;
+  animation: 2s bounce ease infinite;
+}
+.blue {
+  background-color: #4285f5;
+}
+.red {
+  background-color: #ea4436;
+  animation-delay: 0.25s;
+}
+.yellow {
+  background-color: #fbbd06;
+  animation-delay: 0.5s;
+}
+.green {
+  background-color: #34a952;
+  animation-delay: 0.75s;
+}
+@keyframes bounce {
+  50% {
+    transform: translateY(-15px);
+  }
+}
+.result {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.result h3 {
+  letter-spacing: 0.03em;
+  font-weight: 600;
+}
+
+body {
+  background: rgb(180, 238, 240);
+  margin-top: 50px;
+  margin-left: 100px;
+  }
+
+p {
+  font-family: Georgia, serif;
+  font-size: 1.2em;
+  color: DarkSlateGray;
+  }
+
+h1 {
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 2.5em;
+  color: FireBrick;
+  }
+textarea{
+  font-size: 1em;
+  border:1px solid #999999;
+  margin:5px 10px;
+  width:80%;
+  height:80%;
+  padding:3px;
+}
+
