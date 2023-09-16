@@ -1,4 +1,4 @@
-# Keywords to image research
+# Text-to-Image-Translation
 
 ![](static/result_images/test_0000.png)
 
